@@ -21,18 +21,28 @@ if ($department_id == NULL || $department_id == FALSE) {
 
 // Get name for currently selected Department
 #Query calls for all elements from department table that match the current department_id from GET
-$queryDepartments = "SELECT * FROM departments
+$queryDepartments = "SELECT * FROM department
                       WHERE departmentID = :department_id";
-$query1 = $db->prepare($queryDepartments);
-$query1->execute(array(
+$queryDepartmentName = $db->prepare($queryDepartments);
+$queryDepartmentName->execute(array(
     'department_id' => $department_id
 ));
-//$query1=>bindValue(':department_id', $department_id);
-//$query1->execute();
-$departments = $query1->fetch();
-//$department_name = $departments['departmentName'];
-//$query1->closeCursor();
-print_r($departments);
+#Fetches from the query and places in arry department
+$department = $queryDepartmentName->fetch();
+#Takes the current DepartmentName from the Query and stores as an isolated variable
+$department_name = $department['departmentName'];
+$queryDepartmentName->closeCursor();
+//print_r($department);
+
+
+//Get All Departments
+#Select all from departments and store in departments array (For use of Name and ID together in ForEach
+$queryAllDepartments = $db->prepare("SELECT * 
+                        FROM department");
+$queryAllDepartments->execute();
+$departments = $queryAllDepartments->fetchall();
+$queryAllDepartments->closecursor();
+//print_r($departments);
 
 // Courses
 ?>
@@ -55,7 +65,7 @@ print_r($departments);
         <!-- Display a list of Departments -->
         <h2>Departments</h2>
         <nav>
-            <ul>
+            <ul>    <!-- Loop through fetchall of Departments and list each by ID and Name -->
                 <?php foreach ($departments as $department) : ?>
                     <li>
                         <a href="?department_id=<?php echo $department['departmentID']; ?>">
@@ -68,8 +78,11 @@ print_r($departments);
     </aside>
 
     <section>
+        <!-- Department Name -->
+
+        <h2><?php echo $department_name; ?></h2>
         <!-- Display Table of Courses for each Department -->
-        <h2><?php echo $category_name; ?></h2>
+
         <table>
             <tr>
                 <th>Name</th>
