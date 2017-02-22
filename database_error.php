@@ -11,7 +11,7 @@
     <!-- the head section -->
     <head>
         <title>My University Schema</title>
-        <link rel="stylesheet" type="text/css" href="main.css">
+        <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
 
     <!-- the body section -->
