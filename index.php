@@ -45,17 +45,18 @@ $queryAllDepartments->closecursor();
 //print_r($departments);
 
 
-
 // Select all Courses Depending on department_id or selected department
 $queryAllCourses = $db->prepare("SELECT *
                                 FROM courses
-                                WHERE departmentID = :department_id");
+                                WHERE dep_id = :department_id
+                                ORDER BY crs_ID");
+# I use arrays within excute staments instead of bindParam
 $queryAllCourses->execute(array(
-        ':department_id' => $department_id
+    ':department_id' => $department_id
 ));
-
-
-
+#Create an array of all of the courses for use (By using a fetchAll)
+$courses = $queryAllCourses->fetchAll();
+$queryAllCourses->closeCursor();
 
 
 ?>
@@ -102,29 +103,27 @@ $queryAllCourses->execute(array(
                 <th>Title</th>
                 <th>Credits</th>
                 <th>Description</th>
-         <!--Delete--><th>    </th>
-                <!--Update--><th>    </th>
+                <!--Delete-->
+                <th></th>
+                <!--Update-->
+                <th></th>
             </tr>
 
-            <?php foreach ($products as $product) : ?>
+            <?php foreach ($courses as $course) : ?>
                 <tr>
-                    <td><?php echo $product['instrumentName']; ?></td>
-                    <td class="right"><?php echo $product['listPrice']; ?></td>
+                    <td><?php echo $course['crs_code']; ?></td>
+                    <td><?php echo $course['crs_title']; ?></td>
+                    <td><?php echo $course['crs_credits']; ?></td>
+                    <td><?php echo $course['crs_description']; ?></td>
+                    <td><button type="button">Delete</button></td>
+                    <td><button type="button">Update</button></td>
                 </tr>
             <?php endforeach; ?>
+        </table> <br />
 
-            <form action="insert.php?category_id=<?php echo $category_id; ?>" method="post">
-                <tr>
-                    <td><input name='instrumentName' type='text'></td>
-                    <td><input name='listPrice' type='text'></td>
-                    <!--<td><input name="category_id" type='hidden' value="<? echo $category_id; ?>"></td> -->
-                </tr>
-                <tr>
-                    <td colspan="2"><input name="submit" type="submit" value="Insert"></td>
-                </tr>
+        <a href="course_update_from.php">Add Course</a> <br /> <br />
+        <a href="department_list.php">List Departments</a>
 
-            </form>
-        </table>
     </section>
 </main>
 
