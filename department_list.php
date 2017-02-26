@@ -47,7 +47,7 @@ $queryAllDepartments->closecursor();
                 <td><?php echo $department['departmentName']; ?></td>
                 <td>
                     <form action="department_Delete.php" method="post">
-                        <input type="hidden" name="department_id" value="<?= $department['departmentID']; ?>"
+                        <input type="hidden" name="department_id" value="<?= $department['departmentID'] ?>">
                         <button type="submit">Delete</button>
                     </form>
                     <form action="department_update_from.php" method="post">
