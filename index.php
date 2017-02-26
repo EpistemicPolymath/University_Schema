@@ -35,7 +35,7 @@ $queryDepartmentName->closeCursor();
 //print_r($department);
 
 
-//Get All Departments
+//Get All From Departments
 #Select all from departments and store in departments array (For use of Name and ID together in ForEach
 $queryAllDepartments = $db->prepare("SELECT * 
                         FROM department");
@@ -44,7 +44,20 @@ $departments = $queryAllDepartments->fetchall();
 $queryAllDepartments->closecursor();
 //print_r($departments);
 
-// Courses
+
+
+// Select all Courses Depending on department_id or selected department
+$queryAllCourses = $db->prepare("SELECT *
+                                FROM courses
+                                WHERE departmentID = :department_id");
+$queryAllCourses->execute(array(
+        ':department_id' => $department_id
+));
+
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -85,8 +98,12 @@ $queryAllDepartments->closecursor();
 
         <table>
             <tr>
-                <th>Name</th>
-                <th class="right">Price</th>
+                <th>Code</th>
+                <th>Title</th>
+                <th>Credits</th>
+                <th>Description</th>
+         <!--Delete--><th>    </th>
+                <!--Update--><th>    </th>
             </tr>
 
             <?php foreach ($products as $product) : ?>

@@ -10,7 +10,7 @@
 <html>
     <!-- the head section -->
     <head>
-        <title>My University Schema</title>
+        <title>My University Schema Database Error Page</title>
         <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
 
