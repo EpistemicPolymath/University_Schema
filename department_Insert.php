@@ -8,15 +8,13 @@
 
 include_once('database.php');
 
-$userName = $_POST["userName"];
-$userPasword = $_POST["userPass"];
-$userType = $_POST["userType"];
-$stmt = $db->prepare("INSERT INTO UserTbl (userName,userPassword,userType)
+$newDepartmentName = $_POST["newDepartmentName"];
+$query = $db->prepare("INSERT INTO department (departmentName)
         VALUES
-        (:userName,:userPassword,:userType)");
-$stmt->bindParam(':userName', $userName, PDO::PARAM_STR);
-$stmt->bindParam(':userPassword', $userPasword, PDO::PARAM_STR);
-$stmt->bindParam(':userType', $userType, PDO::PARAM_STR);
-$stmt->execute();
-include("index.php");
+        (:newDepartmentName");
+$query->execute(array(
+    ":newDeparmentName" => $newDepartmentName
+));
+include("department_list.php");
+
 ?>
