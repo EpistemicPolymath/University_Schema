@@ -15,7 +15,9 @@ $department_id = $_POST["department_id"];
 #Initiate Query to delete a row from the departments table
 $query = $db->prepare("DELETE FROM departments
                        WHERE departmentID = :department_id;");
-
+#Execute and bind param through array
 $query->execute(array(
     "department_id" => $department_id
 ));
+$query->closeCursor();
+include("department_list.php");
