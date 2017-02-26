@@ -46,8 +46,13 @@ $queryAllDepartments->closecursor();
             <tr>
                 <td><?php echo $department['departmentName']; ?></td>
                 <td>
-                    <button type="button">Delete</button>
-                    <button type="button">Update</button>
+                    <form action="department_Delete.php" method="post">
+                        <input type="hidden" name="department_id" value="<?= $department['departmentID']; ?>"
+                        <button type="submit">Delete</button>
+                    </form>
+                    <form action="department_update_from.php" method="post">
+                    <button type="submit">Update</button>
+                    </form>
                 </td>
             </tr>
         <?php endforeach; ?>
@@ -58,6 +63,6 @@ $queryAllDepartments->closecursor();
     <form action="department_Insert.php" method="post">
         <h1>Add Department</h1>
         <label>Name: <input name='newDepartmentName' type='text'></label>
-        <input type='submit' value='Add' /><br/><br/>
+        <input type='submit' value='Add'/><br/><br/>
 
     </form>

@@ -1,0 +1,21 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: EpistemicPolymath
+ * Date: 2/26/2017
+ * Time: 6:36 PM
+ */
+
+
+require_once("database.php");
+
+#Get the passed variables with POST
+$department_id = $_POST["department_id"];
+
+#Initiate Query to delete a row from the departments table
+$query = $db->prepare("DELETE FROM departments
+                       WHERE departmentID = :department_id;");
+
+$query->execute(array(
+    "department_id" => $department_id
+));

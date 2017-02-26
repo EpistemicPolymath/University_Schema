@@ -8,13 +8,17 @@
 
 include_once('database.php');
 
+#Get variable name from the form POST
 $newDepartmentName = $_POST["newDepartmentName"];
+
+#Create Database Query to Insert into department
 $query = $db->prepare("INSERT INTO department (departmentName)
         VALUES
-        (:newDepartmentName");
+        ( :newDepartmentName );");
 $query->execute(array(
-    ":newDeparmentName" => $newDepartmentName
+    ":newDepartmentName" => $newDepartmentName
 ));
+$query->closeCursor();
 include("department_list.php");
 
 ?>
