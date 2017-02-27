@@ -119,13 +119,14 @@ $queryAllCourses->closeCursor();
                     <td>
                         <form action="course_Delete.php" method="post">
                             <input type="hidden" name="crs_id" value="<?= $course['crs_ID'] ?>">
+                            <input type="hidden" name="department_id" value="<?= $department_id ?>">
                             <button type="submit">Delete</button>
                         </form>
                     </td>
 
                     <td>
                         <form action="course_update_from.php" method="post">
-                        <button type="submit">Update</button>
+                            <button type="submit">Update</button>
                         </form>
                     </td>
                 </tr>
