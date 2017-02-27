@@ -17,7 +17,6 @@ $course_description = $_POST['crs_description'];
 $department_id = $_POST['department_id'];
 
 
-
 #Getting all Departments
 
 $queryAllDepartments = $db->prepare("SELECT * 
@@ -49,14 +48,17 @@ $queryAllDepartments->closecursor();
         <label>Department: <select name="department">
                 <?php foreach ($departments as $department) : ?>{
 
-                    <option value="<?= $department['departmentID'] ?>"><?= $department['departmentName'] ?></option>
+                    <?php if ($department['departmentID'] == $department_id) : ?>
+                        <option selected='selected' value="<?= $department['departmentID'] ?>"><?= $department['departmentName'] ?></option>
+                  <?php  else : ?>
+                        <option value="<?= $department['departmentID'] ?>"><?= $department['departmentName'] ?></option>
 
                     }
-                <?php endforeach; ?>
+                <?php endif; endforeach; ?>
             </select></label><br/>
         <label>Code:<input type="text" name="course_code" value="<?= $course_code ?>"></label><br/>
         <label>Title:<input type="text" name="course_title" value="<?= $course_title ?>"></label><br/>
-        <label>Credits:<input type="text" name="course_credits" value="<?= $course_credits?>"></label><br/><br/>
+        <label>Credits:<input type="text" name="course_credits" value="<?= $course_credits ?>"></label><br/><br/>
         <label>Description:<textarea name="course_description" rows="10" cols="50">
                <?= $course_description ?>
             </textarea></label><br/> <br/> <br/>
