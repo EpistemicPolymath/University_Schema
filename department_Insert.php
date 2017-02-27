@@ -20,4 +20,4 @@ $query->execute(array(
 ));
 $query->closeCursor();
 include("department_list.php");
-header("location:department_list.php");
+//header("location:department_list.php");

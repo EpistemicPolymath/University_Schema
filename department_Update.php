@@ -16,12 +16,14 @@ $department_id = $_POST['department_id'];
 $updateQuery = $db->prepare("UPDATE department
         SET departmentName =  :departmentName
               
-        WHERE departmentID = :departmentID");
+        WHERE departmentID = :department_id;");
 
 $updateQuery->execute(array(
     ":departmentName" => $departmentName,
-    ":departmentID " => $department_id
+    ":department_id" => $department_id
 ));
 $updateQuery->closeCursor();
 include("department_list.php");
-header("location:department_list.php");
+//header("location:department_list.php");
+
+
