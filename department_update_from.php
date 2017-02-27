@@ -7,8 +7,9 @@
  */
 
 #Get variables from the form POST
-$departmentName = filter_input(INPUT_GET, 'department_name', FILTER_VALIDATE_INT);
-$department_id = filter_input(INPUT_GET, 'department_id', FILTER_VALIDATE_INT);
+
+$departmentName = $_POST['department_name'];
+$department_id = $_POST['department_id'];
 
 ?>
 
@@ -27,10 +28,11 @@ $department_id = filter_input(INPUT_GET, 'department_id', FILTER_VALIDATE_INT);
     <hr/>
     <h1>Update Department</h1>
     <form action="department_Update.php" method="post">
-        <label><input type="text" name="departmentName" value="<?= $departmentName ?>"></label>
-        <input type="hidden" name="department_id" value="<?= $department_id ?>">
+        <label>Department Name:<input type="text" name="departmentName" value="<?= $departmentName ?>"></label>
+        <input type="hidden" name="department_id" value="<?= $department_id ?>"> <br /> <br />
         <button type="submit">Update Department</button>
-    </form>
+    </form> <br /> <br />
+    <a href="department_list.php">View Department List</a><br /> <br />
 </main>
 </body>
 </html>

@@ -31,7 +31,7 @@ $queryAllDepartments->closecursor();
 <!-- the body section -->
 <body>
 <main>
-    <h1 class="title">Courses Manager</h1>
+    <h1 class="title">Department Manager</h1>
     <hr/>
     <h1>Department List</h1>
 
