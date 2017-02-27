@@ -6,22 +6,14 @@
  * Time: 8:49 PM
  */
 
+include_once("database.php");
 
-include_once('database.php');
+$queryAllDepartments = $db->prepare("SELECT * 
+                        FROM department");
+$queryAllDepartments->execute();
+$departments = $queryAllDepartments->fetchall();
+$queryAllDepartments->closecursor();
 
-#Get variable name from the form POST
-$newDepartmentName = $_POST["newDepartmentName"];
-
-#Create Database Query to Insert into department
-$query = $db->prepare("INSERT INTO department (departmentName)
-        VALUES
-        ( :newDepartmentName );");
-$query->execute(array(
-    ":newDepartmentName" => $newDepartmentName
-));
-$query->closeCursor();
-include("department_list.php");
-//header("location:department_list.php");
 
 ?>
 
@@ -40,11 +32,28 @@ include("department_list.php");
     <hr/>
     <h1>Add Course</h1>
 
-<form>
+    <form action="course_Insert.php" method="post">
 
+        <label>Department: <select name="department">
+                <?php foreach ($departments as $department) : ?>{
 
+                    <option value="<?= $department['departmentID'] ?>"><?= $department['departmentName'] ?></option>
 
-</form>
+                    }
+                <?php endforeach; ?>
+            </select></label><br/>
+        <label>Code:<input type="text" name="course_code"></label><br/>
+        <label>Title:<input type="text" name="course_title"></label><br/>
+        <label>Credits:<input type="text" name="course_credits"></label><br/><br/>
+        <label>Description:<textarea name="course_description" rows="10" cols="30">
+                Add a Description here...
+            </textarea></label><br/> <br/> <br/>
+
+        <button type="submit">Add Course</button>
+    </form>
+    <br/>
+
+    <a href="index.php">View Courses List</a> <br/> <br/>
 
 </main>
 </body>
