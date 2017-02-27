@@ -9,11 +9,13 @@
 include_once('database.php');
 
 
-$dep_id = $_POST['department'];
+
 $course_code = $_POST['course_code'];
 $course_title = $_POST['course_title'];
 $course_credits = $_POST['course_credits'];
 $course_description = $_POST['course_description'];
+$dep_id = $_POST['department'];
+
 
 
 #Create Database Query to Insert into courses
@@ -25,7 +27,7 @@ $query->execute(array(
     ":course_title" => $course_title,
     ":course_credits" => $course_credits,
     ":course_description" => $course_description,
-    ":dep_id " => $dep_id
+    ":dep_id" => $dep_id
 ));
 $query->closeCursor();
 include("index.php?department_id=".$dep_id);
