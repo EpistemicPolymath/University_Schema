@@ -43,7 +43,7 @@ $queryAllDepartments->closecursor();
     <hr/>
     <h1>Update Course</h1>
 
-    <form action="course_Insert.php" method="post">
+    <form action="course_Update.php" method="post">
 
         <label>Department: <select name="department">
                 <?php foreach ($departments as $department) : ?>{
@@ -62,6 +62,7 @@ $queryAllDepartments->closecursor();
         <label>Description:<textarea name="course_description" rows="10" cols="50">
                <?= $course_description ?>
             </textarea></label><br/> <br/> <br/>
+        <input type="hidden" name="crs_id" value="<?= $course_id ?>">
 
         <button type="submit">Update Course</button>
     </form>
