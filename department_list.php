@@ -70,7 +70,7 @@ $queryAllDepartments->closecursor();
     </form><br />
 
     <a href="index.php">List Courses</a> <br /> <br />
-    
+
 
 </main>
 </body>

@@ -121,7 +121,7 @@ $queryAllCourses->closeCursor();
             <?php endforeach; ?>
         </table> <br />
 
-        <a href="course_update_from.php">Add Course</a> <br /> <br />
+        <a href="course_Insert.php">Add Course</a> <br /> <br />
         <a href="department_list.php">List Departments</a>
 
     </section>
