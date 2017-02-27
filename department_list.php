@@ -67,7 +67,10 @@ $queryAllDepartments->closecursor();
         <label>Name: <input name='newDepartmentName' type='text'></label>
         <input type='submit' value='Add'/><br/><br/>
 
-    </form>
+    </form><br />
+
+    <a href="index.php">List Courses</a> <br /> <br />
+    
 
 </main>
 </body>
