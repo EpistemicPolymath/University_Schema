@@ -13,7 +13,7 @@ require_once("database.php");
 $department_id = $_POST["department_id"];
 
 #Initiate Query to delete a row from the departments table
-$query = $db->prepare("DELETE FROM departments
+$query = $db->prepare("DELETE FROM department
                        WHERE departmentID = :department_id;");
 #Execute and bind param through array
 $query->execute(array(
