@@ -51,7 +51,9 @@ $queryAllDepartments->closecursor();
                         <button type="submit">Delete</button>
                     </form>
                     <form action="department_update_from.php" method="post">
-                    <button type="submit">Update</button>
+                        <input type="hidden" name="department_name" value="<?= $department['departmentName'] ?>">
+                        <input type="hidden" name="department_id" value="<?= $department['departmentID'] ?>">
+                        <button type="submit">Update</button>
                     </form>
                 </td>
             </tr>
@@ -66,3 +68,7 @@ $queryAllDepartments->closecursor();
         <input type='submit' value='Add'/><br/><br/>
 
     </form>
+
+</main>
+</body>
+</html>
