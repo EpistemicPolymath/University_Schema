@@ -45,7 +45,7 @@ $queryAllDepartments->closecursor();
         <label>Code:<input type="text" name="course_code"></label><br/>
         <label>Title:<input type="text" name="course_title"></label><br/>
         <label>Credits:<input type="text" name="course_credits"></label><br/><br/>
-        <label>Description:<textarea name="course_description" rows="10" cols="30">
+        <label>Description:<textarea name="course_description" rows="10" cols="50">
                 Add a Description here...
             </textarea></label><br/> <br/> <br/>
 

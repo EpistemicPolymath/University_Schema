@@ -9,14 +9,14 @@
 include_once('database.php');
 
 
-$departmentName = $_POST['department'];
+$dep_id = $_POST['department'];
 $course_code = $_POST['course_code'];
 $course_title = $_POST['course_title'];
 $course_credits = $_POST['course_credits'];
 $course_description = $_POST['course_description'];
 
 
-#Create Database Query to Insert into department
+#Create Database Query to Insert into courses
 $query = $db->prepare("INSERT INTO courses (crs_code, crs_title, crs_credits, crs_description, dep_id)
         VALUES
         ( :course_code, :course_title, :course_credits, :course_description, :dep_id );");
@@ -28,5 +28,5 @@ $query->execute(array(
     ":dep_id " => $dep_id
 ));
 $query->closeCursor();
-include("department_list.php");
+include("index.php?department_id=".$dep_id);
 //header("location:department_list.php");
