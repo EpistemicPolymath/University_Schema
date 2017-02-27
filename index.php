@@ -126,6 +126,12 @@ $queryAllCourses->closeCursor();
 
                     <td>
                         <form action="course_update_from.php" method="post">
+                            <input type="hidden" name="crs_id" value="<?= $course['crs_ID'] ?>">
+                            <input type="hidden" name="crs_code" value="<?= $course['crs_code'] ?>">
+                            <input type="hidden" name="crs_title" value="<?= $course['crs_title'] ?>">
+                            <input type="hidden" name="crs_credits" value="<?= $course['crs_credits'] ?>">
+                            <input type="hidden" name="crs_description" value="<?= $course['crs_description']?>">
+                            <input type="hidden" name="department_id" value="<?= $department_id ?>">
                             <button type="submit">Update</button>
                         </form>
                     </td>
