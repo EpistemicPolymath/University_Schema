@@ -34,7 +34,7 @@ $updateQuery->execute(array(
     ":course_credits" => $course_credits,
     ":dep_id" => $dep_id,
     ":course_description" => $course_description,
-    "::course_id" => $course_id
+    ":course_id" => $course_id
 ));
 $updateQuery->closeCursor();
 header('Location:index.php?department_id='.$dep_id);
