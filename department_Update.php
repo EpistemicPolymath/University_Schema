@@ -8,14 +8,15 @@
 
 require_once("database.php");
 
-$department_id = $_POST['department_id'];
+#Get Variables with POST
 $departmentName = $_POST['departmentName'];
+$department_id = $_POST['department_id'];
 
 
 $updateQuery = $db->prepare("UPDATE department
         SET departmentName =  :departmentName
               
-        WHERE departmentID = :departmentID;");
+        WHERE departmentID = :departmentID");
 
 $updateQuery->execute(array(
     ":departmentName" => $departmentName,
