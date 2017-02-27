@@ -30,5 +30,5 @@ $query->execute(array(
     ":dep_id" => $dep_id
 ));
 $query->closeCursor();
-include("index.php?department_id=".$dep_id);
-//header("location:department_list.php");
+header('Location:index.php?department_id='.$dep_id);
+exit();

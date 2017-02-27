@@ -115,13 +115,25 @@ $queryAllCourses->closeCursor();
                     <td><?php echo $course['crs_title']; ?></td>
                     <td><?php echo $course['crs_credits']; ?></td>
                     <td><?php echo $course['crs_description']; ?></td>
-                    <td><button type="button">Delete</button></td>
-                    <td><button type="button">Update</button></td>
+
+                    <td>
+                        <form action="course_Delete.php" method="post">
+                            <input type="hidden" name="crs_id" value="<?= $course['crs_ID'] ?>">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+
+                    <td>
+                        <form action="course_update_from.php" method="post">
+                        <button type="submit">Update</button>
+                        </form>
+                    </td>
                 </tr>
             <?php endforeach; ?>
-        </table> <br />
+        </table>
+        <br/>
 
-        <a href="course_Insert_Form.php">Add Course</a> <br /> <br />
+        <a href="course_Insert_Form.php">Add Course</a> <br/> <br/>
         <a href="department_list.php">List Departments</a>
 
     </section>
